@@ -1,0 +1,26 @@
+*{
+   margin: 0;
+   box-sizing: border-box;
+}
+
+
+
+.videoCont {
+   position: fixed;
+   right: 0;
+   bottom: 0;
+   min-width: 100%; 
+   min-height: 100%;
+   z-index: 1;
+ }
+ .textCont{
+z-index: 10;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 16rem;
+filter: blur(10px);
+width: 20rem;
+height: 10rem;
+ }
