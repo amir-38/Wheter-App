@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import videoSrc from "../assets/video.mp4";
 import "./Hero.css";
 function Weather() {
   const [city, setCity] = useState("");
@@ -23,9 +22,10 @@ function Weather() {
         setWeatherData(data);
         console.log(data);
         setLoading(false);
+        setCity("");
       })
       .catch((error) => {
-        console.error("Ошибка при запросе погоды:", error);
+        console.error("Ошибка:", error);
         setLoading(false);
       });
   };
@@ -37,52 +37,74 @@ function Weather() {
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
+    // setWeatherData(null);
   };
+  //change bkg
+  function getBackgroundClass(temp) {
+    if (temp <= -15) {
+      return "veryCold";
+    } else if (temp > -15 && temp <= 0) {
+      return "cold";
+    } else if (temp > 0 && temp <= 17) {
+      return "normal";
+    } else if (temp > 17 && temp <= 32) {
+      return "hot";
+    } else {
+      return "veryHot";
+    }
+  }
+  //convert m/s to km/h
+  function msToKmh(speedInMs) {
+    return (speedInMs * 3600) / 1000;
+  }
+
+  const speedMs = weatherData && weatherData.wind ? weatherData.wind.speed : 0;
+  const speedKmh = msToKmh(speedMs);
+
+  console.log(`${speedMs} m/s is ${speedKmh} km/h`);
 
   return (
     <>
-      <div className="videoCont">
-        <video
-          autoPlay
-          muted
-          loop
-          id="myVideo"
-          style={{ width: "100%", height: "auto" }}
-        >
-          {/* Use the imported video source and specify the MIME type */}
-          <source src={videoSrc} type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>
-      </div>
-      <div className="textCont">
-        <div className="flexCont">
-          <h2>Погода</h2>
-          <form onSubmit={handleFormSubmit}>
-            <label>
-              Город:
-              <input
-                type="text"
-                value={city}
-                onChange={handleCityChange}
-                placeholder="Введите город"
-              />
-            </label>
-            <button type="submit">Поиск</button>
-          </form>
+      <div
+        className={`mainContainer ${
+          weatherData ? getBackgroundClass(weatherData.main.temp) : ""
+        }`}
+      >
+        <div className="textCont">
+          <div className="flexCont">
+            {/* <h2>WEATHER</h2> */}
+            <h1>{weatherData.main.temp}°C</h1>
+            <form onSubmit={handleFormSubmit}>
+              <label>
+                City:
+                <input
+                  type="text"
+                  value={city}
+                  onChange={handleCityChange}
+                  placeholder="Введите город"
+                />
+              </label>
+              <button type="submit">Search</button>
+            </form>
 
-          {loading && <div>Loading...</div>}
+            {loading && <div>Loading...</div>}
 
-          {weatherData && (
-            <div>
-              <h2>Погода в {weatherData.name}</h2>
-              <p>Температура: {weatherData.main.temp}°C</p>
-              <p>Описание: {weatherData.weather[0].description}</p>
-            </div>
-          )}
+            {weatherData && (
+              <div>
+                <h2>Weather in {weatherData.name}</h2>
+                <p> {weatherData.weather[0].main}</p>
+                <p>Humidity:{weatherData.main.humidity}%</p>
+                <p>
+                  Скорость ветра: {msToKmh(weatherData.wind.speed).toFixed(2)}{" "}
+                  км/ч
+                </p>{" "}
+              </div>
+            )}
 
-          {!loading && !weatherData && city !== "" && (
-            <div>Погода не найдена для города {city}.</div>
-          )}
+            {!loading && !weatherData && city !== "" && (
+              <div>Погода не найдена для города {city}.</div>
+            )}
+          </div>
         </div>
       </div>
     </>

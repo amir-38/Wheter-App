@@ -2,25 +2,75 @@
    margin: 0;
    box-sizing: border-box;
 }
-
-
+.mainContainer{
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-image: url(../assets/back.jpg);
+}
+h1{
+   font-size: 3rem;
+}
 
 .videoCont {
    position: fixed;
    right: 0;
    bottom: 0;
-   min-width: 100%; 
-   min-height: 100%;
-   z-index: 1;
+   width: 100%; 
+   height: 100%;
+   /* z-index: 1; */
  }
  .textCont{
-z-index: 10;
-position: relative;
 display: flex;
 justify-content: center;
 align-items: center;
-margin-top: 16rem;
-filter: blur(10px);
+
+margin-top: 70px; 
+border-radius: 5rem;
+}
+ .flexCont{
+/* z-index: 10; */
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+backdrop-filter: blur(10px);
 width: 20rem;
-height: 10rem;
+height: 30rem;
+
+/* background-color: blue;  */
  }
+
+ .veryCold,.cold,.normal,.hot,.veryHot {
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 100vw;
+   height: 100vh;
+
+
+ }
+
+
+ .veryCold {
+   background-image: url("../assets/verycold.jpg") ;
+   
+}
+ 
+ .cold {
+   background-image: url("../assets/cold.jpg")
+ }
+ 
+ .normal {
+   background-image: url("../assets/normal.jpg")
+ }
+ .hot {
+   background-image: url("../assets/hot.jpg")
+ }
+ 
+ .veryHot {
+   background-image: url("../assets/veryhot.jpg")
+ }
+ 
