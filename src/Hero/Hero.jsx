@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Hero.css";
+import NumberDisplay from "./test";
 function Weather() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
@@ -73,7 +74,6 @@ function Weather() {
         <div className="textCont">
           <div className="flexCont">
             {/* <h2>WEATHER</h2> */}
-            <h1>{weatherData.main.temp}°C</h1>
             <form onSubmit={handleFormSubmit}>
               <label>
                 City:
@@ -84,6 +84,7 @@ function Weather() {
                   placeholder="Введите город"
                 />
               </label>
+
               <button type="submit">Search</button>
             </form>
 
@@ -91,6 +92,8 @@ function Weather() {
 
             {weatherData && (
               <div>
+                <NumberDisplay number={weatherData.main.temp} />
+                {/* <h1>{weatherData.main.temp}°C</h1> */}
                 <h2>Weather in {weatherData.name}</h2>
                 <p> {weatherData.weather[0].main}</p>
                 <p>Humidity:{weatherData.main.humidity}%</p>

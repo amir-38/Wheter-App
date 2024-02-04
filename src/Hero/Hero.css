@@ -14,21 +14,14 @@ h1{
    font-size: 3rem;
 }
 
-.videoCont {
-   position: fixed;
-   right: 0;
-   bottom: 0;
-   width: 100%; 
-   height: 100%;
-   /* z-index: 1; */
- }
  .textCont{
 display: flex;
 justify-content: center;
 align-items: center;
-
+backdrop-filter: blur(30px);
 margin-top: 70px; 
-border-radius: 5rem;
+border-radius: 40px;
+background:transparent;
 }
  .flexCont{
 /* z-index: 10; */
@@ -37,8 +30,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-backdrop-filter: blur(10px);
-width: 20rem;
+
+width: 30rem;
 height: 30rem;
 
 /* background-color: blue;  */
