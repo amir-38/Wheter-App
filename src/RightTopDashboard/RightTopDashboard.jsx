@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import "./Hero.css";
-import NumberDisplay from "./test";
-function Weather() {
+import "./RightTopDashboard.css";
+import NumberDisplay from "./TemperatureColor/TemperatureColor";
+// import Sun from "../../src/assets/sun.png";
+function getWeatherIcon(main) {
+  switch (main) {
+    case "Clouds":
+      return "../../src/assets/sun.png"; // Путь к иконке облачно
+    case "Rain":
+      return "../../src/assets/night.png"; // Путь к иконке дождь
+    case "Snow":
+      return "../../src/assets/cloud.png"; // Путь к иконке солнечно
+    // Добавьте другие условия по мере необходимости
+    default:
+      return "../../src/assets/cloudy sun.png"; // Путь к стандартной иконке
+  }
+}
+function RightTopDashboard() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const apiKey = "";
 
   const fetchData = () => {
@@ -38,7 +51,6 @@ function Weather() {
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
-    // setWeatherData(null);
   };
   //change bkg
   function getBackgroundClass(temp) {
@@ -73,7 +85,6 @@ function Weather() {
       >
         <div className="textCont">
           <div className="flexCont">
-            {/* <h2>WEATHER</h2> */}
             <form onSubmit={handleFormSubmit}>
               <label>
                 City:
@@ -87,13 +98,22 @@ function Weather() {
 
               <button type="submit">Search</button>
             </form>
-
             {loading && <div>Loading...</div>}
+            <img
+              src=" 
+"
+              alt=""
+            />
 
             {weatherData && (
               <div>
                 <NumberDisplay number={weatherData.main.temp} />
-                {/* <h1>{weatherData.main.temp}°C</h1> */}
+                <img
+                  className="icons"
+                  src={getWeatherIcon(weatherData.weather[0].main)}
+                  alt="Weather icon"
+                />
+                иконки должны отображатся здесь
                 <h2>Weather in {weatherData.name}</h2>
                 <p> {weatherData.weather[0].main}</p>
                 <p>Humidity:{weatherData.main.humidity}%</p>
@@ -103,7 +123,6 @@ function Weather() {
                 </p>{" "}
               </div>
             )}
-
             {!loading && !weatherData && city !== "" && (
               <div>Погода не найдена для города {city}.</div>
             )}
@@ -114,4 +133,4 @@ function Weather() {
   );
 }
 
-export default Weather;
+export default RightTopDashboard;
