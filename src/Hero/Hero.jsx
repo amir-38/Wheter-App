@@ -6,7 +6,7 @@ function Weather() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const apiKey = "430b827663bab535d8f10ae3c60d78af";
+  const apiKey = "";
 
   const fetchData = () => {
     if (city === "") {
