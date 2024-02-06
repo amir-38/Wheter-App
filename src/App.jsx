@@ -31,7 +31,7 @@ function App() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const apiKey = "430b827663bab535d8f10ae3c60d78af";
+  const apiKey = "af";
 
   function getWeatherIcon(main) {
     switch (main) {
