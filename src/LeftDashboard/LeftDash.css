@@ -1,7 +1,13 @@
 .leftDash{
    width: 24rem;
    height: 100%;
-   background-color: rgb(95, 111, 247);
+   background-color: rgba(214, 217, 252, 0.6);
    border: none;
    border-radius: 2rem;
+}
+form{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   padding-top: 2rem;
 }

@@ -26,10 +26,11 @@ const NumberDisplay = ({ number }) => {
 
   const style = {
     color: calculateColor(number),
-    padding: "10px",
+    // padding: "10px",
     textAlign: "center",
-    margin: "10px",
+    // margin: "10px",
     width: "fit-content",
+    fontSize: "10rem",
   };
 
   return <h1 style={style}>{number}</h1>;

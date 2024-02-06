@@ -3,17 +3,19 @@
    padding: 0;
    box-sizing: border-box;
 }
+body{
+   background-color: #0b1623;
 
+}
 
 #root{
    display: flex;
-justify-content: space-between;
-margin: 1rem;
+   justify-content: space-between;
+   margin: 1rem;
 }
 .rightContainer{
    width: 100%;
    margin-left: 1rem;
-   /* margin: 1rem 1rem 1rem 2rem; */
 }
 .leftContainer{
    /* height: 100%; */
